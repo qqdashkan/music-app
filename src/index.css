@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Gabarito", "sans-serif";
+  --bg-color: #ffffff;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  h1 {
+    font-size: var(--text-4xl);
+    line-height: var(--text-4xl--line-height);
+    font-weight: 600;
+  }
+  h2 {
+    font-size: var(--text-2xl);
+    line-height: var(--text-2xl--line-height);
+  }
+  a {
+    color: #646cff;
+    text-decoration-line: underline;
+    &:hover {
+      color: #535bf2;
+    }
+  }
+  body {
+    font-family: "Gabarito", "sans-serif";
+    font-weight: 300;
+    background-color: var(--bg-color);
+    color: var(--color-blue-950);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  label {
+    text-align: left;
+  }
+}
