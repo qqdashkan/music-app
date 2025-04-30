@@ -55,7 +55,7 @@ export async function getArtistInfo(name) {
   }
 }
 
-export async function deleteTrack(id) {
+/* export async function deleteTrack(id) {
   try {
     await fetch(`https://api.deezer.com/track/${id}`, {
       method: "DELETE",
@@ -79,7 +79,7 @@ export async function addTrack(formatted) {
     console.error("Ошибка удаления:", err);
     return [];
   }
-}
+} */
 
 export async function searchTrackByName(name) {
   try {
