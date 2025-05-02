@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Dropdown from "../dropdown/Dropdown";
 
-function SongItem({ track, onPlayTrack }) {
+function SongItem({ track, setPlayerTrack }) {
   const { artist, name, listeners } = track;
   const [isOpen, setIsOpen] = useState(false);
 
@@ -9,7 +9,7 @@ function SongItem({ track, onPlayTrack }) {
     <div className="flex-wrap: nowrap; my-2 flex h-[65px] w-xl cursor-pointer justify-between rounded-2xl border-0 bg-teal-100/20 py-1.5 ps-5 pe-3 hover:bg-teal-100/50">
       <div
         className="absolute h-[65px] w-md overflow-auto"
-        onClick={() => onPlayTrack(track)}
+        onClick={() => setPlayerTrack(track)}
       ></div>
 
       <div className="flex-1 items-center justify-center">
