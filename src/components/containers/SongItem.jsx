@@ -6,7 +6,7 @@ function SongItem({ track, setPlayerTrack }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="flex-wrap: nowrap; my-2 flex h-[65px] w-xl cursor-pointer justify-between rounded-2xl border-0 bg-teal-100/20 py-1.5 ps-5 pe-3 hover:bg-teal-100/50">
+    <div className="flex-wrap: nowrap; my-2 flex h-[65px] cursor-pointer justify-between rounded-2xl border-0 bg-teal-100/20 py-1.5 ps-5 pe-3 hover:bg-teal-100/50">
       <div
         className="absolute h-[65px] w-md overflow-auto"
         onClick={() => setPlayerTrack(track)}

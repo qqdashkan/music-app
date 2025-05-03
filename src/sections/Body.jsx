@@ -1,4 +1,3 @@
-import Search from "../components/forms/Search";
 import Player from "./Player";
 import SongsList from "./SongsList";
 
@@ -10,7 +9,6 @@ function Body({
   onDeleted,
   sortField,
   setSortField,
-  setSortOrder,
   onPlayTrack,
   uploadAudio,
   currentSong,
@@ -32,7 +30,6 @@ function Body({
             onDeleted={onDeleted}
             sortField={sortField}
             setSortField={setSortField}
-            setSortOrder={setSortOrder}
             onPlay={onPlayTrack}
             setAudio={uploadAudio}
           ></SongsList>

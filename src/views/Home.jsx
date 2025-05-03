@@ -104,7 +104,6 @@ const Home = () => {
           onPaginate={paginate}
           onDeleted={loadTracks}
           sortField={state.sortField}
-          setSortOrder={() => dispatch({ type: "SET_SORT_ORDER" })}
           onPlayTrack={(track) =>
             dispatch({ type: "SET_CURRENT_TRACK", payload: track })
           }

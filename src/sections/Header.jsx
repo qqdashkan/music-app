@@ -1,17 +1,23 @@
 import Search from "../components/forms/Search";
 import Button from "../components/inputs/Button";
+import { NavLink, Link } from "react-router";
 
 export function Header({ onCreate }) {
   return (
     <>
       <header className="sticky top-0 z-10 mb-5 flex w-full items-center justify-center bg-linear-65/srgb from-red-200 via-orange-50 via-60% to-teal-200 px-25 py-5">
         <div className="flex size-fit items-center justify-between gap-10">
-          <img
-            src="https://i.ibb.co/8gsB6sQW/logo-music-1.png"
-            alt="logo"
-            width="175px"
-            className="overflow-hidden object-cover"
-          />
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            <img
+              src="https://i.ibb.co/8gsB6sQW/logo-music-1.png"
+              alt="logo"
+              width="175px"
+              className="overflow-hidden object-cover"
+            />
+          </NavLink>
           <div className="flex justify-between gap-5">
             <Search />
             <Button
@@ -21,21 +27,26 @@ export function Header({ onCreate }) {
               <strong className="text-center text-lg text-white">Search</strong>
             </Button>
           </div>
+          <NavLink
+            to="/home"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            <div className="flex items-center justify-center gap-5">
+              <img
+                src="https://i.ibb.co/nsKW18Yq/kimson-doan-HD8-Kly-WRYYM-unsplash.jpg"
+                alt="avatar"
+                width={"50px"}
+                className="aspect-square overflow-hidden rounded-full object-cover"
+              />
 
-          <div className="flex items-center justify-center gap-5">
-            <img
-              src="https://i.ibb.co/nsKW18Yq/kimson-doan-HD8-Kly-WRYYM-unsplash.jpg"
-              alt="avatar"
-              width={"50px"}
-              className="aspect-square overflow-hidden rounded-full object-cover"
-            />
-            <div className="flex-1 items-center justify-center">
-              <strong className="text-start font-semibold text-nowrap">
-                <p>Daria Neshcheretna</p>
-              </strong>
-              <p>Basic</p>
+              <div className="flex-1 items-center justify-center">
+                <strong className="text-start font-semibold text-nowrap">
+                  <p>Daria Neshcheretna</p>
+                </strong>
+                <p>Basic</p>
+              </div>
             </div>
-          </div>
+          </NavLink>
         </div>
       </header>
     </>

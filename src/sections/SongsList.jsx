@@ -81,7 +81,7 @@ const SongsList = ({ tracks, loading, onPaginate, setSortField, onPlay }) => {
       {loading ? (
         <p className="mt-8 text-center text-white">Loading...</p>
       ) : tracks.length > 0 ? (
-        <div className="mb-5">
+        <div className="mb-5 w-xl">
           {tracks.map((track) => (
             <SongItem
               track={track}
