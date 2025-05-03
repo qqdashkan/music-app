@@ -6,13 +6,13 @@ const RecentlySearch = () => {
   const [tracks, setTracks] = useState(null);
 
   useEffect(() => {
-    const fetchImage = async () => {
+    const fetchTopTracks = async () => {
       const tracksList = await fetchTopTracksByTag(1, "electronic");
       const { tracks } = tracksList;
 
       setTracks(tracks.track);
     };
-    fetchImage();
+    fetchTopTracks();
   }, []);
   return (
     <>
@@ -37,7 +37,7 @@ const RecentlySearch = () => {
         </div>
         <div className="flex flex-col gap-1">
           <h2 className="text-3xl font-medium">Recently Played</h2>
-          <p>Music from your latest search</p>
+          <p>Music from your latest search.</p>
         </div>
       </div>
       <section className="m-auto flex w-5xl justify-between py-4">

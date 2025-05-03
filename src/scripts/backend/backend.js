@@ -68,6 +68,19 @@ export async function fetchTopTracksByTag(page, tag) {
   }
 }
 
+export async function fetchWeeklyChartList(tag) {
+  try {
+    const res = await fetch(
+      `${API_URL}?method=tag.getweeklychartlist&tag=${tag}&api_key=${API_KEY}&limit=6&format=json`,
+    );
+    const response = await res.json();
+    return response;
+  } catch (err) {
+    console.error("Ошибка при получении треков:", err);
+    return [];
+  }
+}
+
 /* export async function deleteTrack(id) {
   try {
     await fetch(`https://api.deezer.com/track/${id}`, {

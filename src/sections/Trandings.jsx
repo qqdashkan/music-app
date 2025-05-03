@@ -1,3 +1,5 @@
+import Button from "../components/inputs/Button";
+
 const Trandings = () => {
   return (
     <>
@@ -34,7 +36,7 @@ const Trandings = () => {
             src="https://i.ibb.co/hJbCTjcV/6006c78182f0b05-upscaled.jpg"
             alt=""
           />
-          <p className="text-xl">Hits Remixed</p>
+          <p className="text-lg">Hits Remixed</p>
         </div>
         <div className="flex cursor-pointer flex-col gap-2">
           <img
@@ -42,7 +44,7 @@ const Trandings = () => {
             src="https://i.ibb.co/W4sVkjQW/db5c3cc13cf911eebe8602c370ea8a2f-upscaled.jpg"
             alt=""
           />
-          <p className="text-xl">Pop Fresh</p>
+          <p className="text-lg">Pop Fresh</p>
         </div>
         <div className="flex cursor-pointer flex-col gap-2">
           <img
@@ -50,18 +52,23 @@ const Trandings = () => {
             src="https://i.ibb.co/ZR5HRMF5/30eba8d8a30e11eeb89eda31b0f942fa-upscaled.jpg"
             alt=""
           />
-          <p className="text-xl">Ultimate Calm</p>
+          <p className="text-lg">Ultimate Calm</p>
         </div>
-
         <div className="flex cursor-pointer flex-col gap-2">
           <img
             className="block aspect-square w-55 overflow-hidden rounded-2xl object-cover"
             src="https://i.ibb.co/HTh8sfgz/a70e21d680b311eebb893a7ca4cc1bdc-upscaled.jpg"
             alt=""
           />
-          <p className="text-xl">Electronic Dance</p>
+          <p className="text-lg">Electronic Dance</p>
         </div>
       </section>
+      <div className="flex-1 justify-center py-5">
+        <Button styled="m-auto flex text-base font-medium cursor-pointer items-center justify-end gap-1 rounded-full bg-[#e1f6f7] px-5 py-2.5 hover:bg-[#c2ecef] active:bg-[#86dde1]">
+          See more +
+        </Button>
+        <hr className="border-0.5 m-auto mt-6 w-5xl border-neutral-200 py-2" />
+      </div>
     </>
   );
 };

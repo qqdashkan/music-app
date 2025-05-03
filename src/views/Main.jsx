@@ -1,6 +1,7 @@
 import Header from "../sections/Header";
 import Trandings from "../sections/Trandings";
 import RecentlySearch from "../sections/RecentlySearch";
+import MyLibrary from "../sections/MyLibrary";
 
 const Main = () => {
   return (
@@ -9,6 +10,7 @@ const Main = () => {
         <Header />
         <Trandings />
         <RecentlySearch />
+        <MyLibrary />
       </div>
     </>
   );
