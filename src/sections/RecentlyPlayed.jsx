@@ -1,19 +1,31 @@
 import SongItem from "../components/containers/SongItem";
 import { fetchTopTracksByTag } from "../scripts/backend/backend";
 import { useEffect, useState } from "react";
+import Button from "../components/inputs/Button";
 
 const RecentlySearch = () => {
+  const columns = 2;
+  const itemsPerRow = columns;
   const [tracks, setTracks] = useState(null);
+  const [visibleRows, setVisibleRows] = useState(2);
+  const [visibleTracks, setVisibleTracks] = useState([]);
 
   useEffect(() => {
     const fetchTopTracks = async () => {
       const tracksList = await fetchTopTracksByTag(1, "electronic");
       const { tracks } = tracksList;
-
       setTracks(tracks.track);
+      setVisibleTracks(tracks.track.slice(0, visibleRows * itemsPerRow));
     };
     fetchTopTracks();
   }, []);
+
+  useEffect(() => {
+    if (tracks) {
+      setVisibleTracks(tracks.slice(0, visibleRows * itemsPerRow));
+    } else return;
+  }, [visibleRows]);
+
   return (
     <>
       <div className="m-auto flex w-5xl gap-5 py-5">
@@ -40,16 +52,28 @@ const RecentlySearch = () => {
           <p>Music from your latest search.</p>
         </div>
       </div>
-      <section className="m-auto flex w-5xl justify-between py-4">
+      <section className="m-auto w-5xl flex-1 justify-between">
         {tracks ? (
-          <div className="grid w-5xl grid-cols-2 gap-x-4">
-            {tracks.map((track) => (
+          <div className="grid w-5xl grid-cols-2 gap-x-4 py-4">
+            {visibleTracks.map((track) => (
               <SongItem track={track} key={track.mbid}></SongItem>
             ))}
           </div>
         ) : (
           <p className="text-black">Loading...</p>
         )}
+
+        {tracks && visibleTracks.length < tracks.length && (
+          <div className="flex justify-center py-4">
+            <Button
+              onClick={() => setVisibleRows((prev) => prev + 1)}
+              className="flex cursor-pointer items-center justify-center rounded-full bg-[#e1f6f7] px-5 py-2.5 text-base font-medium hover:bg-[#c2ecef] active:bg-[#86dde1]"
+            >
+              See more +
+            </Button>
+          </div>
+        )}
+        <hr className="border-0.5 m-auto mt-6 w-5xl border-neutral-200 py-2" />
       </section>
     </>
   );

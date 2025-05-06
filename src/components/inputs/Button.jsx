@@ -1,6 +1,6 @@
-function Button({ children, action, styled }) {
+function Button({ children, className, ...props }) {
   return (
-    <button type="button" onClick={() => action()} className={styled}>
+    <button className={className} {...props}>
       {children}
     </button>
   );

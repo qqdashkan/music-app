@@ -1,9 +1,18 @@
+import { playlists } from "../data/playlists";
+import { Link } from "react-router";
+import { useState } from "react";
+import Card from "../components/cards/Card";
 import Button from "../components/inputs/Button";
 
 const Trandings = () => {
+  const [visibleRows, setVisibleRows] = useState(1);
+  const columns = 4;
+  const itemsPerRow = columns;
+  const visiblePlaylists = playlists.slice(0, visibleRows * itemsPerRow);
+
   return (
     <>
-      <div className="m-auto flex w-5xl gap-5 py-4">
+      <div className="m-auto flex w-5xl gap-4 py-4">
         <div className="flex h-[64px] w-[64px] items-center justify-center rounded-lg bg-gradient-to-tr from-red-200 from-5% via-orange-50 to-teal-200 to-80%">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -29,46 +38,29 @@ const Trandings = () => {
           <p>These music perfectly match your searches and your profile.</p>
         </div>
       </div>
-      <section className="m-auto flex w-5xl justify-between py-4">
-        <div className="flex cursor-pointer flex-col gap-2">
-          <img
-            className="block aspect-square w-55 overflow-hidden rounded-2xl object-cover"
-            src="https://i.ibb.co/hJbCTjcV/6006c78182f0b05-upscaled.jpg"
-            alt=""
-          />
-          <p className="text-lg">Hits Remixed</p>
-        </div>
-        <div className="flex cursor-pointer flex-col gap-2">
-          <img
-            className="block aspect-square w-55 overflow-hidden rounded-2xl object-cover"
-            src="https://i.ibb.co/W4sVkjQW/db5c3cc13cf911eebe8602c370ea8a2f-upscaled.jpg"
-            alt=""
-          />
-          <p className="text-lg">Pop Fresh</p>
-        </div>
-        <div className="flex cursor-pointer flex-col gap-2">
-          <img
-            className="block aspect-square w-55 overflow-hidden rounded-2xl object-cover"
-            src="https://i.ibb.co/ZR5HRMF5/30eba8d8a30e11eeb89eda31b0f942fa-upscaled.jpg"
-            alt=""
-          />
-          <p className="text-lg">Ultimate Calm</p>
-        </div>
-        <div className="flex cursor-pointer flex-col gap-2">
-          <img
-            className="block aspect-square w-55 overflow-hidden rounded-2xl object-cover"
-            src="https://i.ibb.co/HTh8sfgz/a70e21d680b311eebb893a7ca4cc1bdc-upscaled.jpg"
-            alt=""
-          />
-          <p className="text-lg">Electronic Dance</p>
-        </div>
+      <section className="m-auto grid w-5xl grid-cols-4 place-items-center gap-5 py-4">
+        {visiblePlaylists.map((playlist) => (
+          <Link to="/album" key={playlist.id}>
+            <Card
+              key={playlist.id}
+              img={playlist.imgURL}
+              name={playlist.title}
+            />
+          </Link>
+        ))}
       </section>
-      <div className="flex-1 justify-center py-5">
-        <Button styled="m-auto flex text-base font-medium cursor-pointer items-center justify-end gap-1 rounded-full bg-[#e1f6f7] px-5 py-2.5 hover:bg-[#c2ecef] active:bg-[#86dde1]">
-          See more +
-        </Button>
-        <hr className="border-0.5 m-auto mt-6 w-5xl border-neutral-200 py-2" />
-      </div>
+      {visiblePlaylists.length < playlists.length && (
+        <div className="flex justify-center py-4">
+          <Button
+            onClick={() => setVisibleRows((prev) => prev + 1)}
+            className="flex cursor-pointer items-center justify-center rounded-full bg-[#e1f6f7] px-5 py-2.5 text-base font-medium hover:bg-[#c2ecef] active:bg-[#86dde1]"
+          >
+            See more +
+          </Button>
+        </div>
+      )}
+
+      <hr className="border-0.5 m-auto mt-6 w-5xl border-neutral-200 py-2" />
     </>
   );
 };

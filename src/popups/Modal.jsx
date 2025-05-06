@@ -10,8 +10,8 @@ function Modal({ isModalOpen, onClick, dataForm, updateList, updatePlayer }) {
             Add a New Track
           </h2>
           <Button
-            action={onClick}
-            styled="relative cursor-pointer bottom-8 left-96 flex justify-between items-center text-black text-center"
+            onClick={onClick}
+            className="relative bottom-8 left-96 flex cursor-pointer items-center justify-between text-center text-black"
           >
             <svg
               className="h-3 w-3"

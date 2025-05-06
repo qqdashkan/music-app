@@ -1,8 +1,9 @@
+import Card from "../components/cards/Card";
 import { getTopArtists } from "../scripts/backend/backend";
 import { useEffect, useState } from "react";
 
 const MyLibrary = () => {
-  const [artists, setArtists] = useState(null);
+  /*   const [artists, setArtists] = useState(null);
 
   useEffect(() => {
     const fetchTopArtists = async () => {
@@ -13,7 +14,7 @@ const MyLibrary = () => {
       setArtists(artists.artist);
     };
     fetchTopArtists();
-  }, []);
+  }, []); */
   return (
     <>
       <div className="m-auto flex w-5xl gap-5 py-4">
@@ -35,7 +36,7 @@ const MyLibrary = () => {
           <p>Your playlists & saved tracks.</p>
         </div>
       </div>
-      <section className="m-auto flex w-5xl justify-between py-4">
+      <section className="m-auto grid w-5xl grid-cols-4 gap-5 py-4">
         <div className="flex cursor-pointer flex-col gap-2">
           <div className="flex h-55 w-55 items-center justify-center rounded-2xl border-2 border-neutral-200 bg-white hover:border-3 hover:border-blue-950">
             <svg
@@ -57,26 +58,14 @@ const MyLibrary = () => {
           </div>
           <p className="text-lg">Build a new playlist</p>
         </div>
-        <div className="flex cursor-pointer flex-col gap-2">
-          <img
-            className="block aspect-square w-55 overflow-hidden rounded-2xl object-cover"
-            src="https://i.ibb.co/xdMf51N/wp12137965.jpg"
-            alt=""
-          />
-          <p className="text-lg">My playlist#1</p>
-        </div>
-        <div className="flex cursor-pointer flex-col gap-2">
-          <img
-            className="block aspect-square w-55 overflow-hidden rounded-2xl object-cover"
-            src="https://i.ibb.co/tk2KfR4/fitness-apps-64e6264448140.jpg"
-            alt=""
-          />
-          <p className="text-lg">Sport Motivation Music 2025</p>
-        </div>
-        <div className="flex cursor-pointer flex-col gap-2">
-          <div className="block h-55 w-55 rounded-2xl bg-white"></div>
-          <p className="text-lg"></p>
-        </div>
+        <Card
+          img="https://i.ibb.co/xdMf51N/wp12137965.jpg"
+          name="My playlist#1"
+        />
+        <Card
+          img="https://i.ibb.co/tk2KfR4/fitness-apps-64e6264448140.jpg"
+          name="Sport Motivation Music 2025"
+        />
       </section>
     </>
   );

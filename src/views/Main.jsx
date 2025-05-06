@@ -1,6 +1,6 @@
 import Header from "../sections/Header";
 import Trandings from "../sections/Trandings";
-import RecentlySearch from "../sections/RecentlySearch";
+import RecentlyPlayed from "../sections/RecentlyPlayed";
 import MyLibrary from "../sections/MyLibrary";
 
 const Main = () => {
@@ -9,7 +9,7 @@ const Main = () => {
       <div className="w-screen">
         <Header />
         <Trandings />
-        <RecentlySearch />
+        <RecentlyPlayed />
         <MyLibrary />
       </div>
     </>

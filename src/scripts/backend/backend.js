@@ -58,7 +58,7 @@ export async function getArtistInfo(name) {
 export async function fetchTopTracksByTag(page, tag) {
   try {
     const res = await fetch(
-      `${API_URL}?method=tag.gettoptracks&tag=${tag}&api_key=${API_KEY}&limit=6&page=${page}&format=json`,
+      `${API_URL}?method=tag.gettoptracks&tag=${tag}&api_key=${API_KEY}&limit=12&page=${page}&format=json`,
     );
     const response = await res.json();
     return response;
