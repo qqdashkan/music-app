@@ -1,20 +1,16 @@
 import Card from "../components/cards/Card";
-import { getTopArtists } from "../scripts/backend/backend";
-import { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 const MyLibrary = () => {
-  /*   const [artists, setArtists] = useState(null);
+  const createNewPlaylist = async () => {
+    await fetch("/api/playlists", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: "Gym Playlist" }),
+    });
+    console.error(error);
+  };
 
-  useEffect(() => {
-    const fetchTopArtists = async () => {
-      const topArtistsList = await getTopArtists();
-      const { artists } = topArtistsList;
-      console.log(artists.artist);
-
-      setArtists(artists.artist);
-    };
-    fetchTopArtists();
-  }, []); */
   return (
     <>
       <div className="m-auto flex w-5xl gap-5 py-4">
@@ -37,7 +33,10 @@ const MyLibrary = () => {
         </div>
       </div>
       <section className="m-auto grid w-5xl grid-cols-4 gap-5 py-4">
-        <div className="flex cursor-pointer flex-col gap-2">
+        <div
+          onClick={createNewPlaylist}
+          className="flex cursor-pointer flex-col gap-2"
+        >
           <div className="flex h-55 w-55 items-center justify-center rounded-2xl border-2 border-neutral-200 bg-white hover:border-3 hover:border-blue-950">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -58,14 +57,21 @@ const MyLibrary = () => {
           </div>
           <p className="text-lg">Build a new playlist</p>
         </div>
-        <Card
-          img="https://i.ibb.co/xdMf51N/wp12137965.jpg"
-          name="My playlist#1"
-        />
-        <Card
-          img="https://i.ibb.co/tk2KfR4/fitness-apps-64e6264448140.jpg"
-          name="Sport Motivation Music 2025"
-        />
+        <Link to="/playlist">
+          <Card
+            onPlayTrack={(track) =>
+              dispatch({ type: "SET_CURRENT_TRACK", payload: track })
+            }
+            img="https://i.ibb.co/xdMf51N/wp12137965.jpg"
+            name="My playlist#1"
+          />
+        </Link>
+        <Link to="/playlist">
+          <Card
+            img="https://i.ibb.co/tk2KfR4/fitness-apps-64e6264448140.jpg"
+            name="Sport Motivation Music 2025"
+          />
+        </Link>
       </section>
     </>
   );

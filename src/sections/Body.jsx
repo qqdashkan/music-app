@@ -32,7 +32,7 @@ function Body({
             setSortField={setSortField}
             onPlay={onPlayTrack}
             setAudio={uploadAudio}
-          ></SongsList>
+          />
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from "react";
 import { fetchTracks } from "../scripts/backend/backend";
-import Header from "../sections/Header";
+
 import Modal from "../popups/Modal";
 import Body from "../sections/Body";
 import FormContent from "../components/forms/FormContent";
@@ -92,11 +92,6 @@ const Home = () => {
   return (
     <>
       <div className="w-screen">
-        <Header
-          onCreate={() => {
-            dispatch({ type: "SET_MODAL" });
-          }}
-        />
         <Body
           tracks={state.tracks}
           loading={state.loading}
@@ -114,7 +109,7 @@ const Home = () => {
           setSortField={(value) =>
             dispatch({ type: "SET_SORT_FIELD", payload: value })
           }
-        ></Body>
+        />
         <Modal
           isModalOpen={state.isOpen}
           onClick={() => dispatch({ type: "SET_MODAL" })}
