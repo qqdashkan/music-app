@@ -64,7 +64,7 @@ const Home = () => {
 
   const sortTracksByShuffle = () => {
     let tracksArray = state.tracks;
-    const randomTracks = () => {
+    const shuffleTracks = () => {
       for (let i = 0; i < tracksArray.length; i++) {
         const j = Math.floor(Math.random() * tracksArray.length);
         [tracksArray[i], tracksArray[j]] = [tracksArray[j], tracksArray[i]];
@@ -72,8 +72,7 @@ const Home = () => {
       return tracksArray;
     };
 
-    const tracksList = randomTracks();
-
+    const tracksList = shuffleTracks();
     dispatch({ type: "SET_TRACKS", payload: tracksList });
   };
 

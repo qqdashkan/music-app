@@ -13,6 +13,7 @@
     "@neondatabase/serverless": "^1.0.0",
     "@vercel/blob": "^1.0.1",
     "@vercel/postgres": "^0.10.0",
+    "path": "^0.12.7",
     "react": "^19.1.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.55.0",

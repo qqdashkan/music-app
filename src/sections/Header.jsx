@@ -1,8 +1,8 @@
 import Search from "../components/forms/Search";
 import Button from "../components/inputs/Button";
-import { NavLink, Link } from "react-router";
+import { Link } from "react-router";
 
-export function Header({ onCreate }) {
+export function Header() {
   return (
     <>
       <header className="sticky top-0 z-10 mb-5 flex w-full items-center justify-center bg-linear-65/srgb from-red-200 via-orange-50 via-60% to-teal-200 px-25 py-5">
@@ -17,10 +17,7 @@ export function Header({ onCreate }) {
           </Link>
           <div className="flex justify-between gap-5">
             <Search />
-            <Button
-              className="flex cursor-pointer items-center justify-end gap-1 rounded-full bg-[#008194] px-10 py-2.5 text-center text-lg text-white hover:bg-[#005f75] active:bg-[#003954]"
-              onClick={onCreate}
-            >
+            <Button className="flex cursor-pointer items-center justify-end gap-1 rounded-full bg-[#008194] px-10 py-2.5 text-center text-lg text-white hover:bg-[#005f75] active:bg-[#003954]">
               <strong>Search</strong>
             </Button>
           </div>

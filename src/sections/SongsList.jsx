@@ -2,7 +2,7 @@ import SongItem from "../components/containers/SongItem";
 import Pagination from "../components/ui/Pagination";
 import { useState, useEffect } from "react";
 
-const SongsList = ({ tracks, loading, onPaginate, setSortField, onPlay }) => {
+const SongsList = ({ tracks, loading, setSortField, onPlay }) => {
   const [field, setField] = useState("Sort by");
   const [isOpen, setIsOpen] = useState(null);
 
@@ -85,7 +85,7 @@ const SongsList = ({ tracks, loading, onPaginate, setSortField, onPlay }) => {
           {tracks.map((track) => (
             <SongItem
               track={track}
-              key={track.listeners}
+              key={track.listeners ? track.listeners : track.id}
               setPlayerTrack={onPlay}
             ></SongItem>
           ))}
@@ -93,7 +93,6 @@ const SongsList = ({ tracks, loading, onPaginate, setSortField, onPlay }) => {
       ) : (
         <p className="mt-8 text-center text-white">Not found</p>
       )}
-      <Pagination action={onPaginate}></Pagination>
     </>
   );
 };

@@ -1,20 +1,70 @@
+import { useEffect, useState } from "react";
 import Card from "../components/cards/Card";
 import { Link } from "react-router";
 
 const MyLibrary = () => {
+  const [playlists, setPlaylists] = useState([]);
+
   const createNewPlaylist = async () => {
-    await fetch("/api/playlists", {
+    await fetch("http://localhost:5000/api/playlist", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: "Gym Playlist" }),
+      body: JSON.stringify({
+        name: "My playlist#1",
+        userId: "53544f16-4c20-4742-9ef1-e838193f159d",
+      }),
     });
     console.error(error);
   };
 
+  const getPlaylists = async () => {
+    const response = await fetch(
+      "http://localhost:5000/api/playlists/playlists",
+      {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      },
+    );
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error("Server error:", errorData);
+      return;
+    }
+
+    const data = await response.json();
+    setPlaylists(data);
+  };
+
+  const addPlaylistImage = async () => {
+    const response = await fetch(
+      "http://localhost:5000/api/playlists/2e8ca355-6849-4c7c-8325-fd17053badac",
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          imgUrl: "https://i.ibb.co/tk2KfR4/fitness-apps-64e6264448140.jpg",
+        }),
+      },
+    );
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error("Server error:", errorData);
+      return;
+    }
+  };
+
+  useEffect(() => {
+    getPlaylists();
+  }, []);
+
+  if (playlists.length === 0) return <p className="text-black">Loading...</p>;
   return (
     <>
       <div className="m-auto flex w-5xl gap-5 py-4">
-        <div className="flex h-[64px] w-[64px] items-center justify-center rounded-lg bg-gradient-to-tr from-red-200 from-5% via-orange-50 to-teal-200 to-80%">
+        <div
+          onClick={() => addPlaylistImage()}
+          className="flex h-[64px] w-[64px] items-center justify-center rounded-lg bg-gradient-to-tr from-red-200 from-5% via-orange-50 to-teal-200 to-80%"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width={35}
@@ -57,21 +107,17 @@ const MyLibrary = () => {
           </div>
           <p className="text-lg">Build a new playlist</p>
         </div>
-        <Link to="/playlist">
-          <Card
-            onPlayTrack={(track) =>
-              dispatch({ type: "SET_CURRENT_TRACK", payload: track })
-            }
-            img="https://i.ibb.co/xdMf51N/wp12137965.jpg"
-            name="My playlist#1"
-          />
-        </Link>
-        <Link to="/playlist">
-          <Card
-            img="https://i.ibb.co/tk2KfR4/fitness-apps-64e6264448140.jpg"
-            name="Sport Motivation Music 2025"
-          />
-        </Link>
+        {playlists.length > 0 ? (
+          playlists.map(({ id, image_url, name }) => {
+            return (
+              <Link to={`/playlist/${id}`}>
+                <Card key={id} img={image_url} name={name} />
+              </Link>
+            );
+          })
+        ) : (
+          <p className="mt-8 text-center text-black">Playlists not found</p>
+        )}
       </section>
     </>
   );

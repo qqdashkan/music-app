@@ -1,9 +1,9 @@
-import { API_URL, API_KEY } from "../../constants/api";
+import { API_URL, API_KEY, SERVER_URL } from "../../constants/api";
 
 export async function fetchTracks(page) {
   try {
     const res = await fetch(
-      `${API_URL}?method=geo.gettoptracks&country=ukraine&api_key=${API_KEY}&limit=10&page=${page}&format=json`,
+      `${API_URL}?method=geo.gettoptracks&country=ukraine&api_key=${API_KEY}&limit=25&page=${page}&format=json`,
     );
     const response = await res.json();
     return response;

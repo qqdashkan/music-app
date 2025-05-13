@@ -14,7 +14,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path="/album" element={<Home />} />
           <Route path="/" element={<Main />} />
-          <Route path="/playlist" element={<Playlist />} />
+          <Route path="/playlist/:playlistId" element={<Playlist />} />
           <Route path="/profile" element={<UserProfile />} />
         </Route>
       </Routes>

@@ -10,10 +10,29 @@ const Trandings = () => {
   const itemsPerRow = columns;
   const visiblePlaylists = playlists.slice(0, visibleRows * itemsPerRow);
 
+  const createNewUser = async () => {
+    await fetch("http://localhost:5000/api/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: "Daria Neshcheretna",
+        avatar:
+          "https://i.ibb.co/nsKW18Yq/kimson-doan-HD8-Kly-WRYYM-unsplash.jpg",
+      }),
+    });
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error("Server error:", errorData);
+      return;
+    }
+  };
   return (
     <>
       <div className="m-auto flex w-5xl gap-4 py-4">
-        <div className="flex h-[64px] w-[64px] items-center justify-center rounded-lg bg-gradient-to-tr from-red-200 from-5% via-orange-50 to-teal-200 to-80%">
+        <div
+          onClick={createNewUser}
+          className="flex h-[64px] w-[64px] items-center justify-center rounded-lg bg-gradient-to-tr from-red-200 from-5% via-orange-50 to-teal-200 to-80%"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width={35}

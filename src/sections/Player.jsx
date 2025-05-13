@@ -10,7 +10,9 @@ export function Player({ currentTrack }) {
     const fetchImage = async () => {
       if (currentTrack) {
         const trackInfo = await getTrackInfo(
-          currentTrack.artist.name,
+          currentTrack.artist.name
+            ? currentTrack.artist.name
+            : currentTrack.artist,
           currentTrack.name,
         );
         const { track } = trackInfo;
