@@ -10,7 +10,7 @@ const Playlist = () => {
   const getTracksFromPlaylist = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/playlists/${params.playlistId}`,
+        `https://my-music-app-ag5l.onrender.com/api/playlists/${params.playlistId}`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json" },

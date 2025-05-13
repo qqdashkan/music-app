@@ -6,7 +6,7 @@ const MyLibrary = () => {
   const [playlists, setPlaylists] = useState([]);
 
   const createNewPlaylist = async () => {
-    await fetch("http://localhost:5000/api/playlist", {
+    await fetch("https://my-music-app-ag5l.onrender.com/api/playlist", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -19,7 +19,7 @@ const MyLibrary = () => {
 
   const getPlaylists = async () => {
     const response = await fetch(
-      "http://localhost:5000/api/playlists/playlists",
+      "https://my-music-app-ag5l.onrender.com/api/playlists/playlists",
       {
         method: "GET",
         headers: { "Content-Type": "application/json" },
@@ -37,7 +37,7 @@ const MyLibrary = () => {
 
   const addPlaylistImage = async () => {
     const response = await fetch(
-      "http://localhost:5000/api/playlists/2e8ca355-6849-4c7c-8325-fd17053badac",
+      "https://my-music-app-ag5l.onrender.com/api/playlists/2e8ca355-6849-4c7c-8325-fd17053badac",
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },

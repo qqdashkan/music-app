@@ -17,6 +17,8 @@ export function Player({ currentTrack }) {
         );
         const { track } = trackInfo;
         setTrackInfo(track);
+        console.log(track);
+
         setTrackImage(track.album.image[3]);
       }
     };
@@ -33,7 +35,7 @@ export function Player({ currentTrack }) {
               <img
                 className="m-auto my-10 block aspect-square w-60 overflow-hidden rounded-2xl object-cover text-center"
                 src={trackImage["#text"]}
-                alt={track.album.artist}
+                alt={track.artist.name}
               />
             ) : (
               <p className="text-black">Loading img...</p>
@@ -42,7 +44,7 @@ export function Player({ currentTrack }) {
           {track ? (
             <div className="text-center text-2xl font-normal">
               <strong>{track.name}</strong>
-              <p className="text-lg">{track.album.artist}</p>
+              <p className="text-lg">{track.artist.name}</p>
             </div>
           ) : (
             <p className="text-black">Loading info...</p>

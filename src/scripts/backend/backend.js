@@ -14,6 +14,8 @@ export async function fetchTracks(page) {
 }
 
 export async function getTrackInfo(name, title) {
+  console.log(name, title);
+
   try {
     const res = await fetch(
       `${API_URL}?method=track.getInfo&api_key=${API_KEY}&artist=${name}&track=${title}&format=json`,

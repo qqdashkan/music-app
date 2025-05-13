@@ -11,7 +11,7 @@ const Trandings = () => {
   const visiblePlaylists = playlists.slice(0, visibleRows * itemsPerRow);
 
   const createNewUser = async () => {
-    await fetch("http://localhost:5000/api/users", {
+    await fetch("https://my-music-app-ag5l.onrender.com/api/users", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
